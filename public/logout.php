@@ -1,11 +1,13 @@
 <?php
 session_start();
+// unset the admin session variable
 unset($_SESSION['loggedin']);
 echo 'You are now logged out
 <a href="login.php">Go to
-login.php</a>';
+logincheck.php</a>';
 
-
+// redirect the user to the login page
+header("location: login.php");
 
 ?>
 <?php

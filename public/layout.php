@@ -24,7 +24,7 @@
 				<li><a class="categoryLink" href="sport.php">Sport</a></li>
 				<li><a class="categoryLink" href="health.php">Health</a></li>
 				<li><a class="categoryLink" href="toys.php">Toys</a></li>
-				<li><a class="categoryLink" href="#motors.php">Motors</a></li>
+				<li><a class="categoryLink" href="motors.php">Motors</a></li>
 				<li><a class="categoryLink" href="more.php">More</a>
 				<li><a class="more auctionLink" href="login.php">Login</a></li>
 			</li>

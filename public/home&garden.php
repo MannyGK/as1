@@ -1,5 +1,7 @@
 <?php
 require 'layout.php';
+require 'functions.php';
+require 'database.php';
 ?>
 
 
@@ -12,13 +14,8 @@ require 'layout.php';
 <h1>Select Auction</h1>
 <ul>
 <?php
-$server = 'mysql';
-$username = 'student';
-$password = 'student';
-$schema = 'assignment1';
-$pdo = new PDO('mysql:dbname=' . $schema . ';host=' . $server, $username, $password);
 
-$stmt= $pdo->prepare('SELECT * FROM auction');
+$stmt= $pdo->prepare('SELECT * FROM auction WHERE categoryid=4');
 $stmt->execute();
 
 
@@ -34,10 +31,10 @@ foreach($stmt as $row)
 
 
  <form>
-							<label>Add your review</label> <textarea name="reviewtext"></textarea>
+	<label>Add your review</label> <textarea name="reviewtext"></textarea>
 
-							<input type="submit" name="submit" value="Add Review" />
-						</form>
+	<input type="submit" name="submit" value="Add Review" />
+	</form>
 <?php
 require 'footer.php';
 ?>

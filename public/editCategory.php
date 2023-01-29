@@ -1,27 +1,26 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
- echo 'You are seeing this because you are logged in. <a href="logout.php">Click here to log out</a>';
-}
-else {
- echo 'Sorry, you must be logged in to view this page. <a href="login.php">Click here to log in</a>';
-}
+require 'logincheck.php';
 ?>
 <?php
 require 'layout.php';
+require 'functions.php';
+require 'database.php';
 ?>
 
+<ul>
+    <li><a href="addCategory.php">add Category</a></li>
+    <li><a href="deleteCategory.php">delete Category</a></li>
+    <li><a href="editAuction.php">edit Auction</a></li>
+</ul>
 
 
+<h1>edit Category</h1>
+
+<form action="editCategory.php" method="POST">
+    
+       
 
 <?php
-$server = 'mysql';
-$username = 'student';
-$password = 'student';
-$schema = 'assignment1';
-$pdo = new PDO('mysql:dbname=' . $schema . ';host=' . $server, $username, $password);
-
 $stmt= $pdo->prepare('SELECT * FROM category');
 $stmt->execute();
 
@@ -39,31 +38,18 @@ echo '</select>';
 </html>
 
 <?php
-$server = 'mysql';
-$username = 'student';
-$password = 'student';
-$schema = 'assignment1';
-$pdo = new PDO('mysql:dbname=' . $schema . ';host=' . $server, $username, $password);
-
-
-
 if(isset($_POST['submit'])){
     $stmt = $pdo->prepare('UPDATE assignment1.category (name)
     VALUES (:name)');
     
     $values = [
-        'name' => $_GET['name']
+        'name' => $_POST['name']
     ];
     $stmt->execute($values);
     
  
 }
 
-?>
 
-
-
-
-<?php
 require 'footer.php';
 ?>

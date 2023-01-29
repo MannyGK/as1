@@ -1,18 +1,16 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
- echo 'You are seeing this because you are logged in. <a href="logout.php">Click here to log out</a>';
-}
-else {
- echo 'Sorry, you must be logged in to view this page. <a href="login.php">Click here to log in</a>';
-}
+require 'logincheck.php';
 ?>
 <?php
 require 'layout.php';
 ?>
 
 
+<ul>
+    <li><a href="addCategory.php">add Category</a></li>
+    <li><a href="editCategory.php">edit Category</a></li>
+   
+</ul>
 
 
 

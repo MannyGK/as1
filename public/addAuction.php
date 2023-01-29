@@ -1,27 +1,20 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-
- echo 'You are seeing this because you are logged in. <a href="logout.php">Click here to log out</a>';
-}
-else {
- echo 'Sorry, you must be logged in to view this page. <a href="login.php">Click here to log in</a>';
-}
-?>
-<?php
+require 'logincheck.php';
 require 'layout.php';
+require 'functions.php';
+require 'database.php';
 ?>
-
+<ul>
+    <li><a href="editAuction.php">edit Auction</a></li>
+    <li><a href="addCategory.php">Add Category</a></li>
+    <li><a href="addAuction.php">Add Auction</a></li>
+</ul>
 <h1>Add Auction</h1>
 
 
 
 <?php
-$server = 'mysql';
-$username = 'student';
-$password = 'student';
-$schema = 'assignment1';
-$pdo = new PDO('mysql:dbname=' . $schema . ';host=' . $server, $username, $password);
+
 
 if(isset($_POST['submit'])){
     $stmt = $pdo->prepare('INSERT INTO assignment1.auction ( categoryid, title, description, endDate)
@@ -53,7 +46,7 @@ else {
                 <option value="3">sport</option>
                 <option value="5">health</option>
                 <option value="6">toys</option>
-                <option value="7p">motors</option>
+                <option value="7">motors</option>
 
         </select>
         <input type="date" name="endDate" value="<?php echo date('yy-mm-dd'); ?>" />

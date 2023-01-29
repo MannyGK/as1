@@ -2,12 +2,11 @@
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
- echo 'You are seeing this because you are logged in. <a href="logout.php">Click here to log out</a>';
+ echo 'You are logged in. <a href="logout.php">Click here to log out</a>';
 }
-
-?>
-<?php
 require 'layout.php';
+require 'functions.php';
+require 'database.php';
 ?>
 
 		

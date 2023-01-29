@@ -1,5 +1,7 @@
 <?php
 require 'layout.php';
+require 'functions.php';
+require 'database.php';
 ?>
 
 <ul>
@@ -11,19 +13,14 @@ require 'layout.php';
 
 <ul>
 <?php
-$server = 'mysql';
-$username = 'student';
-$password = 'student';
-$schema = 'assignment1';
-$pdo = new PDO('mysql:dbname=' . $schema . ';host=' . $server, $username, $password);
 
-$stmt= $pdo->prepare('SELECT * FROM auction');
+$stmt= $pdo->prepare('SELECT * FROM auction WHERE categoryid =2');
 $stmt->execute();
 
 
 foreach($stmt as $row)
 {
-    echo '<li><a href="home&garden.php=' . $row['categoryid'] . '">' . $row['title'] . '">' . $row
+    echo '<li><a href="electronics.php=' . $row['categoryid'] . '">' . $row['title'] . '">' . $row
     ['description'] . '">' . $row['endDate'] . '</a><li>';
 }
 
